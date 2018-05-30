@@ -15,7 +15,7 @@ class ExaminationAppTitleFrame extends JFrame {
   
   //Constructor - this runs first
   ExaminationAppTitleFrame() { 
-    super("Start Screen");
+    super("Examination Application");
     this.thisFrame = this; //lol 
     
     //configure the window

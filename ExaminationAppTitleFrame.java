@@ -63,7 +63,7 @@ class ExaminationAppTitleFrame extends JFrame {
   //This is an inner class that is used to detect a button press
   class TeacherButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      System.out.println("Running Teacher GUI");
+    	new TeacherHomeGUI();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }

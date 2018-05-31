@@ -32,7 +32,7 @@ class ExaminationAppTitleFrame extends JFrame {
     JPanel buttonPanel = new JPanel();
     //buttonPanel.setLayout(new FlowLayout());
     
-     //Create two JButtons for the centerPanel
+     //Create two JButtons for the buttonPanel
     JButton teacherButton = new JButton("Teacher");
     teacherButton.addActionListener(new TeacherButtonListener());
     teacherButton.setSize(new Dimension(200,30));
@@ -65,7 +65,6 @@ class ExaminationAppTitleFrame extends JFrame {
     public void actionPerformed(ActionEvent event)  {  
     	new TeacherHomeGUI();
       thisFrame.dispose();
-      // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
   }
   
@@ -73,8 +72,8 @@ class ExaminationAppTitleFrame extends JFrame {
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Running Student GUI");
+      new ExamAppStudentLogin();
       thisFrame.dispose();
-      // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       
     }
   }

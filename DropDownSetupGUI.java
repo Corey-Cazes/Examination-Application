@@ -18,6 +18,22 @@ class DropDownSetupGUI extends JFrame {
 
   JFrame thisFrame;
   
+  private String [] numbers = {"1","2","3","4", "5"};
+
+  public HintTextField questionField = new HintTextField("Enter Question Here");
+  public HintTextField ChoiceField1 = new HintTextField("Enter First Choice Here");
+  public HintTextField ChoiceField2 = new HintTextField("Enter Second Choice Here");
+  public HintTextField ChoiceField3 = new HintTextField("Enter Third Choice Here");
+  public HintTextField ChoiceField4 = new HintTextField("Enter Fourth Choice Here");
+  public HintTextField ChoiceField5 = new HintTextField("Enter Fifth Choice Here");
+  JComboBox<?> numBox = new JComboBox<Object>(numbers);
+  
+  public Node tempNode = Test.tests.getLast();
+  
+ public Test tempTest = (Test) tempNode.getItem();
+  
+  public DropDown dropDown = new DropDown();
+  
   //Constructor - this runs first
   DropDownSetupGUI() { 
     super("Examination Application");
@@ -30,7 +46,7 @@ class DropDownSetupGUI extends JFrame {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     this.setResizable (false);
     
-    String [] numbers = {"1","2","3","4","5"};
+    
     
     //Create a Panel for stuff
     JPanel mainPanel = new JPanel();
@@ -87,21 +103,21 @@ class DropDownSetupGUI extends JFrame {
     JLabel correctAnswerLabel = new JLabel("Correct Answer: ");
     correctAnswerLabel.setSize(new Dimension(200,50));
     
-    HintTextField questionField = new HintTextField("Enter Question Here");
+  
     questionField.setPreferredSize(new Dimension(200,30));
    
    
-    HintTextField ChoiceField1 = new HintTextField("Enter First Choice Here");
+
     ChoiceField1.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField2 = new HintTextField("Enter Second Choice Here");
+  
     ChoiceField2.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField3 = new HintTextField("Enter Third Choice Here");
+   
     ChoiceField3.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField4 = new HintTextField("Enter Fourth Choice Here");
+  
     ChoiceField4.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField5 = new HintTextField("Enter Fifth Choice Here");
+
     ChoiceField5.setPreferredSize(new Dimension(200,30));
-    JComboBox<?> numBox = new JComboBox<Object>(numbers);
+
     numBox.setSelectedIndex(0);
     
  
@@ -148,6 +164,23 @@ choicePanelMain.add(correctAnswerPanel);
   //This is an inner class that is used to detect a button press
   class DoneButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
+    	dropDown.question = questionField.getText().toString();
+    	dropDown.addAnswer(ChoiceField1.getText().toString());
+    	dropDown.addAnswer(ChoiceField2.getText().toString());
+    	dropDown.addAnswer(ChoiceField3.getText().toString());
+    	dropDown.addAnswer(ChoiceField4.getText().toString());
+    	dropDown.addAnswer(ChoiceField5.getText().toString());
+    	dropDown.setAnswerKeyAsInt(numBox.getSelectedIndex());
+    	
+		System.out.println("Multiple Choice Added: ");
+		System.out.println("Question: "+questionField.getText().toString());
+		System.out.println("Choice 1: "+ChoiceField1.getText().toString());
+		System.out.println("Choice 2: "+ChoiceField2.getText().toString());
+		System.out.println("Choice 3: "+ChoiceField3.getText().toString());
+		System.out.println("Choice 4: "+ChoiceField4.getText().toString());
+		System.out.println("Choice 5: "+ChoiceField5.getText().toString());
+		System.out.println("Correct Choice: "+numBox.getSelectedIndex());
+    	tempTest.addDropDown(dropDown);
       new QuestionTypeGUI();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)

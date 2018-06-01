@@ -17,6 +17,20 @@ import java.awt.TextField;
 class ShortAnswerSetupGUI extends JFrame { 
 
   JFrame thisFrame;
+
+  public HintTextField questionField = new HintTextField("Enter Question Here");
+  public HintTextField ChoiceField1 = new HintTextField("Enter First Choice Here");
+  public HintTextField ChoiceField2 = new HintTextField("Enter Second Choice Here");
+  public HintTextField ChoiceField3 = new HintTextField("Enter Third Choice Here");
+  public HintTextField ChoiceField4 = new HintTextField("Enter Fourth Choice Here");
+  public HintTextField ChoiceField5 = new HintTextField("Enter Fifth Choice Here");
+  
+  
+  public Node tempNode = Test.tests.getLast();
+  
+ public Test tempTest = (Test) tempNode.getItem();
+  
+  public ShortAnswer shortAnswer = new ShortAnswer();
   
   //Constructor - this runs first
   ShortAnswerSetupGUI() { 
@@ -82,19 +96,19 @@ class ShortAnswerSetupGUI extends JFrame {
     JLabel Choice5Label = new JLabel("Choice 5: ");
     Choice5Label.setSize(new Dimension(200,50));
     
-    HintTextField questionField = new HintTextField("Enter Question Here");
+
     questionField.setPreferredSize(new Dimension(200,30));
    
    
-    HintTextField ChoiceField1 = new HintTextField("Enter Key Phrase Here");
+  
     ChoiceField1.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField2 = new HintTextField("Enter Key Phrase Here");
+
     ChoiceField2.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField3 = new HintTextField("Enter Key Phrase Here");
+
     ChoiceField3.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField4 = new HintTextField("Enter Key Phrase Here");
+
     ChoiceField4.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField5 = new HintTextField("Enter Key Phrase Here");
+
     ChoiceField5.setPreferredSize(new Dimension(200,30));
     
  
@@ -140,7 +154,24 @@ choicePanelMain.add(choicePanel5);
   //This is an inner class that is used to detect a button press
   class DoneButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      new QuestionTypeGUI();
+      
+    	shortAnswer.question = questionField.getText().toString();
+    	shortAnswer.addAnswer(ChoiceField1.getText().toString());
+    	shortAnswer.addAnswer(ChoiceField2.getText().toString());
+    	shortAnswer.addAnswer(ChoiceField3.getText().toString());
+    	shortAnswer.addAnswer(ChoiceField4.getText().toString());
+    	shortAnswer.addAnswer(ChoiceField5.getText().toString());
+  
+    	
+		System.out.println("Short Answer Added: ");
+		System.out.println("Question: "+questionField.getText().toString());
+		System.out.println("Choice 1: "+ChoiceField1.getText().toString());
+		System.out.println("Choice 2: "+ChoiceField2.getText().toString());
+		System.out.println("Choice 3: "+ChoiceField3.getText().toString());
+		System.out.println("Choice 4: "+ChoiceField4.getText().toString());
+		System.out.println("Choice 5: "+ChoiceField5.getText().toString());
+		
+    	new QuestionTypeGUI();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }

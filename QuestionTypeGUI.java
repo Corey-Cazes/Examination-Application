@@ -98,7 +98,9 @@ class QuestionTypeGUI extends JFrame {
   //This is an inner class that is used to detect a button press
   class ShortAnswerButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      new ShortAnswerSetupGUI();
+     
+    	
+    	new ShortAnswerSetupGUI();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       

@@ -7,7 +7,7 @@ public class Question {
 
 	//Class Variables
 	protected int type;
-	private String question;
+	protected String question;
 	
 	/* The Get Type method
 	 * @returns Type of question as an integer

@@ -1,15 +1,11 @@
-/* The Test Class
- * Authors: Corey Cazes and Dawn Murphy
- * Date: May 30, 2018
- * Super Class for all other person type objects
- */
-public class MultipleChoice extends Question {
 
+public class DropDown extends Question{
+	
 	private SimpleLinkedList answers = new SimpleLinkedList();
 	private String answerKey;
 	private int answerKeyAsInt;
 	
-	MultipleChoice(){
+	DropDown(){
 		this.answerKey = "[Answer Key]";
 		this.answerKeyAsInt = -1;
 		this.type = 1;
@@ -37,6 +33,5 @@ public class MultipleChoice extends Question {
 	public void addAnswer(String answer) {
 		this.answers.add(answer);
 	}
-	
-	
+
 }

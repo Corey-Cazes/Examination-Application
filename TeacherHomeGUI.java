@@ -40,6 +40,9 @@ class TeacherHomeGUI extends JFrame {
     JButton studentListButton = new JButton("Student List");
     studentListButton.addActionListener(new StudentButtonListener());
     studentListButton.setSize(new Dimension(200,30)); 
+    JButton logOutButton = new JButton("Log Out");
+    logOutButton.addActionListener(new LogOutButtonListener());
+    logOutButton.setSize(new Dimension(200,30)); 
     
     //Create some JLabels for the centerPanel
     JLabel startLabel = new JLabel("This is the Teacher Home Screen");
@@ -48,6 +51,7 @@ class TeacherHomeGUI extends JFrame {
     //add the buttons to the buttonPanel
     buttonPanel.add(createQuizButton);
     buttonPanel.add(studentListButton);
+    buttonPanel.add(logOutButton);
     
     //Add all panels to the mainPanel according to border layout
     mainPanel.add(buttonPanel,BorderLayout.SOUTH);
@@ -64,7 +68,8 @@ class TeacherHomeGUI extends JFrame {
   //This is an inner class that is used to detect a button press
   class TeacherButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      new QuestionTypeGUI();
+    Test.tests.add(new Test());
+    	new QuestionTypeGUI();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
@@ -74,6 +79,16 @@ class TeacherHomeGUI extends JFrame {
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Running Student GUI");
+      thisFrame.dispose();
+      // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
+      
+    }
+  }
+  
+  //This is an inner class that is used to detect a button press
+  class LogOutButtonListener implements ActionListener {  //this is the required class definition
+    public void actionPerformed(ActionEvent event)  {  
+    	new ExaminationAppTitleFrame();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       

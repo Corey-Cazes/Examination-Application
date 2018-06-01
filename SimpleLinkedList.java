@@ -1,35 +1,5 @@
 //**********A template  for a simple linked list ********
 
-class linkTemplate {
-  public static void main(String[] args) {     //the main method
-    
-    
-    SimpleLinkedList<String> myList = new SimpleLinkedList<String>();   //you can use your list similar to an ArrayList
-    
-    myList.add("Bob");
-    System.out.println(myList.size());
-    myList.add("Bob2");
-    System.out.println(myList.size());
-    System.out.println(myList.indexOf("Bob2"));
-    System.out.println(myList.get(0));
-    myList.clear();
-    System.out.println(myList.size());
-    myList.add("Bob");
-    myList.add("Bob2");
-    myList.add("Bob3");
-    myList.add("Bob4");
-    myList.add("Bob5");
-    System.out.println(myList.get(3));
-    System.out.println(myList.size());
-    myList.remove(2);
-    System.out.println(myList.size());
-    System.out.println(myList.indexOf("Bob4"));
-    System.out.println(myList.get(0));
-    System.out.println(myList.get(1));
-    System.out.println(myList.get(2));
-  }
-}
-
 class SimpleLinkedList<E> { 
   private Node<E> head;
   
@@ -91,6 +61,18 @@ class SimpleLinkedList<E> {
       }
     }
     return index;
+  }
+  
+  public Node<E> getLast(){
+	  Node<E> tempNode = head;
+	    if (head == null){
+	        return head;
+	      }
+	    
+	    while (tempNode.next!= null) {
+	    	tempNode = tempNode.getNext();
+	    }
+	    return tempNode;
   }
   
   public E remove(int index) { 

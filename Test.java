@@ -4,10 +4,17 @@
  * Super Class for all other person type objects
  */
 public class Test {
+
+	
+	static SimpleLinkedList tests = new SimpleLinkedList();
 	
 	//Class Variables
 	private SimpleLinkedList questions = new SimpleLinkedList();
-	private SimpleLinkedList coursesAvailable = new SimpleLinkedList();
+	private String course;
+	
+	Test(){
+		System.out.println("New Test Created");
+	}
 	
 	/* The Get Questions method
 	 * @returns list of questions
@@ -25,18 +32,32 @@ public class Test {
 	}
 	
 	/* The Get Courses Available method
-	 * @returns List of courses the test is available to
+	 * @returns course the test is available to
 	 */
-	public SimpleLinkedList getCoursesAvailable() {
-		return coursesAvailable;
+	public String getCourse() {
+		return course;
+	}
+	
+	public void addMultipleChoice (MultipleChoice question) {
+		
+		
+		questions.add(question);
+	}
+	
+	public void addDropDown (DropDown question) {
+		questions.add(question);
+	}
+	
+	public void addShortAnswer (ShortAnswer question) {
+		questions.add(question);
 	}
 	
 	/* The setCoursesAvailable method
 	 * @param coursesAvailable List of courses available to the test
-	 * Sets List of Courses available to the test
+	 * Sets Course available to the test
 	 */
-	public void setCoursesAvailable(SimpleLinkedList coursesAvailable) {
-		this.coursesAvailable = coursesAvailable;
+	public void setCoursesAvailable(String course) {
+		this.course = course;
 	}
 
 }

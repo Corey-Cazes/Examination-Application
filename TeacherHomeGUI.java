@@ -17,6 +17,7 @@ class TeacherHomeGUI extends JFrame {
   TeacherHomeGUI() { 
     super("Examination Application");
     this.thisFrame = this; //lol 
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     
     //configure the window
     this.setSize(500,300);    

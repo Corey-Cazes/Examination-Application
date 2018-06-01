@@ -14,23 +14,22 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.TextField;
 
-class MultipleChoiceSetupGUI extends JFrame { 
+class ShortAnswerSetupGUI extends JFrame { 
 
   JFrame thisFrame;
   
   //Constructor - this runs first
-  MultipleChoiceSetupGUI() { 
+  ShortAnswerSetupGUI() { 
     super("Examination Application");
     this.thisFrame = this; //lol 
     
     
     //configure the window
-    this.setSize(500,300);    
+    this.setSize(600,400);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     this.setResizable (false);
     
-    String [] numbers = {"1","2","3","4"};
     
     //Create a Panel for stuff
     JPanel mainPanel = new JPanel();
@@ -40,7 +39,7 @@ class MultipleChoiceSetupGUI extends JFrame {
     JPanel choicePanelMain = new JPanel();
     choicePanelMain.setLayout(new BoxLayout(choicePanelMain, BoxLayout.PAGE_AXIS));
     
-    JLabel startLabel = new JLabel("Multiple Choice Setup");
+    JLabel startLabel = new JLabel("Short Answer Choice Setup");
     startLabel.setPreferredSize(new Dimension(500,50));
     
     
@@ -64,8 +63,8 @@ class MultipleChoiceSetupGUI extends JFrame {
     choicePanel3.setLayout(new FlowLayout());
     JPanel choicePanel4 = new JPanel();
     choicePanel4.setLayout(new FlowLayout());
-    JPanel correctAnswerPanel = new JPanel();
-    correctAnswerPanel.setLayout(new FlowLayout());
+    JPanel choicePanel5 = new JPanel();
+    choicePanel5.setLayout(new FlowLayout());
     
      //Create two JButtons for the centerPanel
     JLabel questionLabel = new JLabel("Question: ");
@@ -80,23 +79,23 @@ class MultipleChoiceSetupGUI extends JFrame {
     Choice3Label.setSize(new Dimension(200,50));
     JLabel Choice4Label = new JLabel("Choice 4: ");
     Choice4Label.setSize(new Dimension(200,50));
-    JLabel correctAnswerLabel = new JLabel("Correct Answer: ");
-    correctAnswerLabel.setSize(new Dimension(200,50));
+    JLabel Choice5Label = new JLabel("Choice 5: ");
+    Choice5Label.setSize(new Dimension(200,50));
     
     HintTextField questionField = new HintTextField("Enter Question Here");
     questionField.setPreferredSize(new Dimension(200,30));
    
    
-    HintTextField ChoiceField1 = new HintTextField("Enter First Choice Here");
+    HintTextField ChoiceField1 = new HintTextField("Enter Key Phrase Here");
     ChoiceField1.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField2 = new HintTextField("Enter Second Choice Here");
+    HintTextField ChoiceField2 = new HintTextField("Enter Key Phrase Here");
     ChoiceField2.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField3 = new HintTextField("Enter Third Choice Here");
+    HintTextField ChoiceField3 = new HintTextField("Enter Key Phrase Here");
     ChoiceField3.setPreferredSize(new Dimension(200,30));
-    HintTextField ChoiceField4 = new HintTextField("Enter Fourth Choice Here");
+    HintTextField ChoiceField4 = new HintTextField("Enter Key Phrase Here");
     ChoiceField4.setPreferredSize(new Dimension(200,30));
-    JComboBox<?> numBox = new JComboBox<Object>(numbers);
-    numBox.setSelectedIndex(0);
+    HintTextField ChoiceField5 = new HintTextField("Enter Key Phrase Here");
+    ChoiceField5.setPreferredSize(new Dimension(200,30));
     
  
     
@@ -113,15 +112,17 @@ choicePanel3.add(Choice3Label);
 choicePanel3.add(ChoiceField3);
 choicePanel4.add(Choice4Label);
 choicePanel4.add(ChoiceField4);
-correctAnswerPanel.add(correctAnswerLabel);
-correctAnswerPanel.add(numBox);
+choicePanel5.add(Choice5Label);
+choicePanel5.add(ChoiceField5);
+
+
 
 choicePanelMain.add(questionPanel);
 choicePanelMain.add(choicePanel1);
 choicePanelMain.add(choicePanel2);
 choicePanelMain.add(choicePanel3);
 choicePanelMain.add(choicePanel4);
-choicePanelMain.add(correctAnswerPanel);
+choicePanelMain.add(choicePanel5);
     
     //Add all panels to the mainPanel according to border layout
     mainPanel.add(choicePanelMain,BorderLayout.WEST);

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingUtilities;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 class QuestionTypeGUI extends JFrame { 
 
@@ -17,6 +18,7 @@ class QuestionTypeGUI extends JFrame {
   QuestionTypeGUI() { 
     super("Examination Application");
     this.thisFrame = this; //lol 
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     
     //configure the window
     this.setSize(500,300);    
@@ -27,6 +29,9 @@ class QuestionTypeGUI extends JFrame {
     //Create a Panel for stuff
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
+    
+    JPanel finishButtonPanel = new JPanel();
+    finishButtonPanel.setLayout(new FlowLayout());
     
     //create a Panel for the buttons
     JPanel buttonPanel = new JPanel();
@@ -42,6 +47,11 @@ class QuestionTypeGUI extends JFrame {
     JButton shortAnswerButton = new JButton("Short Answer");
     shortAnswerButton.addActionListener(new ShortAnswerButtonListener());
     shortAnswerButton.setSize(new Dimension(200,30)); 
+    JButton finishQuizButton = new JButton("Finish Quiz");
+    finishQuizButton.addActionListener(new FinishQuizButtonListener());
+    finishQuizButton.setPreferredSize(new Dimension(200,70));
+    
+    finishButtonPanel.add(finishQuizButton);
     
     //Create some JLabels for the centerPanel
     JLabel startLabel = new JLabel("Choose the type of question");
@@ -52,7 +62,9 @@ class QuestionTypeGUI extends JFrame {
     buttonPanel.add(dropDownButton);
     buttonPanel.add(shortAnswerButton);
     
+    
     //Add all panels to the mainPanel according to border layout
+    mainPanel.add(finishButtonPanel,BorderLayout.CENTER);
     mainPanel.add(buttonPanel,BorderLayout.SOUTH);
     mainPanel.add(startLabel,BorderLayout.NORTH);
     
@@ -76,7 +88,7 @@ class QuestionTypeGUI extends JFrame {
   //This is an inner class that is used to detect a button press
   class DropDownButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      System.out.println("Running Student GUI");
+      new DropDownSetupGUI();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       
@@ -86,12 +98,21 @@ class QuestionTypeGUI extends JFrame {
   //This is an inner class that is used to detect a button press
   class ShortAnswerButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      System.out.println("Running Student GUI");
+      new ShortAnswerSetupGUI();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       
     }
   }
+  
+  class FinishQuizButtonListener implements ActionListener {  //this is the required class definition
+	    public void actionPerformed(ActionEvent event)  {  
+	      new TeacherHomeGUI();
+	      thisFrame.dispose();
+	      // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
+	      
+	    }
+	  }
 
   //Main method starts this application
   public static void main(String[] args) { 

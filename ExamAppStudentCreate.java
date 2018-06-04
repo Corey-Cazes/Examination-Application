@@ -36,6 +36,15 @@ class ExamAppStudentCreate extends JFrame {
   JTextField course3Field = new JTextField("Course Code 3");
   JTextField course4Field = new JTextField("Course Code 4");
   JTextField course5Field = new JTextField("Course Code 5");
+  //aforementioned contents
+  int idNum;
+  String firstName;
+  String lastName;
+  String course1code;
+  String course2code;
+  String course3code;
+  String course4code;
+  String course5code;
   
   //constructor
   ExamAppStudentCreate(){
@@ -129,7 +138,7 @@ class ExamAppStudentCreate extends JFrame {
     public void actionPerformed(ActionEvent event){
       System.out.println("text field listener running - id number");
       String idStr= idNumberField.getText();
-      int idNum = Integer.parseInt(idStr,10);
+      idNum = Integer.parseInt(idStr,10);
       System.out.println(idNum);
     }
   }
@@ -137,7 +146,7 @@ class ExamAppStudentCreate extends JFrame {
     class firstNameSaver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - first name");
-        String firstName = firstNameField.getText();
+        firstName = firstNameField.getText();
         System.out.println(firstName);
       }
     }
@@ -145,7 +154,7 @@ class ExamAppStudentCreate extends JFrame {
     class lastNameSaver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - last name");
-        String lastName = lastNameField.getText();
+        lastName = lastNameField.getText();
         System.out.println(lastName);
       }
     }
@@ -153,7 +162,7 @@ class ExamAppStudentCreate extends JFrame {
     class course1Saver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - course 1");
-        String course1code = course1Field.getText();
+        course1code = course1Field.getText();
         System.out.println(course1code);
       }
     }
@@ -161,7 +170,7 @@ class ExamAppStudentCreate extends JFrame {
     class course2Saver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - course 2");
-        String course2code = course2Field.getText();
+        course2code = course2Field.getText();
         System.out.println(course2code);
       }
     }
@@ -169,7 +178,7 @@ class ExamAppStudentCreate extends JFrame {
     class course3Saver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - course 3");
-        String course3code = course3Field.getText();
+        course3code = course3Field.getText();
         System.out.println(course3code);
       }
     }
@@ -177,7 +186,7 @@ class ExamAppStudentCreate extends JFrame {
     class course4Saver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - course 4");
-        String course4code = course4Field.getText();
+        course4code = course4Field.getText();
         System.out.println(course4code);
       }
     }
@@ -185,7 +194,7 @@ class ExamAppStudentCreate extends JFrame {
     class course5Saver implements ActionListener{
       public void actionPerformed(ActionEvent event){
         System.out.println("text field listener running - course 5");
-        String course5code = course5Field.getText();
+        course5code = course5Field.getText();
         System.out.println(course5code);
       }
     }
@@ -195,7 +204,18 @@ class ExamAppStudentCreate extends JFrame {
     public void actionPerformed(ActionEvent event)  {
       System.out.println ("pretend this adds you to the system");
       //add the student to the system lemow
+      Student newStudent = new Student();
+      newStudent.firstName = firstName;
+      newStudent.lastName = lastName;
+      newStudent.IDNumber = idNum;
+      newStudent.courses.add(course1code);
+      newStudent.courses.add(course2code);
+      newStudent.courses.add(course3code);
+      newStudent.courses.add(course4code);
+      newStudent.courses.add(course5code);
       //send the student to their home screen
+      new ExamAppStudentHome();
+      thisFrame.dispose();
     }
   }
   
@@ -204,5 +224,3 @@ class ExamAppStudentCreate extends JFrame {
     new ExamAppStudentCreate();
 
   }
-  
-}

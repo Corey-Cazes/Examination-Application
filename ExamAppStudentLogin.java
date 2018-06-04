@@ -79,20 +79,60 @@ class ExamAppStudentLogin extends JFrame {
       System.out.println("text field listener running");
       String takenString = numberEntry.getText();
       IDtoFind = Integer.parseInt(takenString,10);
+      System.out.println(IDtoFind);
     }
   }
   
   //this detects the button press and acts appropriately
   class LoginButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent event)  { 
+      String takenString = numberEntry.getText();
+      IDtoFind = Integer.parseInt(takenString,10);
+      System.out.println(IDtoFind);
       System.out.println("Searching for Student");
       //run method to find if the student exists or not
+      boolean studentExists = findStudent();
       //if true -> set current student to whoever just logged in and run studentHomepage
-      //if false -> run studentCreate
+      if (studentExists = true){
+        Student currentStudent = new Student();
+        currentStudent = findSpecificStudent();
+        new ExamAppStudentHome();
+        thisFrame.dispose();
+      }
+      else {
+        //if false -> run studentCreate
+        new ExamAppStudentCreate();
+        thisFrame.dispose();
+      }
     }
   }
   
   //method to find if the student exists and return a boolean
-  //reads list of students and compares ID numbers
+  public static boolean findStudent(){
+    //reads list of students and compares ID numbers
+    Student searchingStudent = new Student();
+    boolean studentFound = false;
+    while (studentFound != true){
+      for (int count = 0; count >(/*student list*/.size()); count++){
+        searchingStudent = /*student list*/.get(count);
+        if (searchingStudent.IDNumber = IDtoFind){
+          studentFound = true;
+        }
+      }
+    }
+    return studentFound;
+  }
   
+  //method to find whoever logged in
+  public static Student findSpecificStudent(){
+    Student loggingInStudent = new Student;
+    Student selectedStudent = new Student;
+    for (int count = 0; count >(/*student list*/.size()); count++){
+      selectedStudent = /*student list*/.get(count);
+      if (selectedStudent.IDNumber = IDtoFind){
+        loggingInStudent = selectedStudent;
+      }
+    }
+    return loggingInStudent;
+  }
 }

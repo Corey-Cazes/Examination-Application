@@ -11,6 +11,7 @@ public class Test {
 	//Class Variables
 	private SimpleLinkedList questions = new SimpleLinkedList();
 	private String course;
+	private String name;
 	
 	Test(){
 		System.out.println("New Test Created");
@@ -58,6 +59,14 @@ public class Test {
 	 */
 	public void setCoursesAvailable(String course) {
 		this.course = course;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -109,7 +109,7 @@ class QuestionTypeGUI extends JFrame {
   
   class FinishQuizButtonListener implements ActionListener {  //this is the required class definition
 	    public void actionPerformed(ActionEvent event)  {  
-	      new TeacherHomeGUI();
+	      new CourseSetupGUI();
 	      thisFrame.dispose();
 	      // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
 	      

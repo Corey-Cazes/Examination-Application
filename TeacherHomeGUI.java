@@ -48,7 +48,7 @@ class TeacherHomeGUI extends JFrame {
     JLabel startLabel = new JLabel("This is the Teacher Home Screen");
     
 
-    //add the buttons to the buttonPanel
+    //add the buttons to the buttonPanel       
     buttonPanel.add(createQuizButton);
     buttonPanel.add(studentListButton);
     buttonPanel.add(logOutButton);
@@ -78,7 +78,8 @@ class TeacherHomeGUI extends JFrame {
   //This is an inner class that is used to detect a button press
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-      System.out.println("Running Student GUI");
+    System.out.println("HeyHeyJeu");  
+    	new StudentTable();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       

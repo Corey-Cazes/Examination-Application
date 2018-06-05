@@ -6,30 +6,44 @@
 public class Student extends Person{
 
 	//Class Variables
-	public static SimpleLinkedList studentList = new SimpleLinkedList();
-	private int IDNumber;
-	private SimpleLinkedList grades = new SimpleLinkedList();
-	private SimpleLinkedList courses = new SimpleLinkedList();
+	public static SimpleLinkedList<Student> studentList = new SimpleLinkedList<Student>();
+	private String IDNumber;
+	private SimpleLinkedList<Object> grades = new SimpleLinkedList<Object>();
+	private SimpleLinkedList<Object> courses = new SimpleLinkedList<Object>();
 	
 	/* The Get IDNumber method
 	 * @returns IDNumber
 	 */
-	public int getIDNumber() {
+	public String getIDNumber() {
 		return IDNumber;
 	}
+	
+	public Student(String name, String IDNumber) {
+		this.setFirstName(name);
+		this.setIDNumber(IDNumber);
+		
+		Student.studentList.add(this);
+		
+	}
+	
+	public Student() {
+		
+	}
+	
+
 	
 	/* The setIDNumber method
 	 * @param iDNumber Name of person
 	 * Sets IDNumber of student
 	 */
-	public void setIDNumber(int iDNumber) {
+	public void setIDNumber(String iDNumber) {
 		IDNumber = iDNumber;
 	}
 	
 	/* The Get Grades method
 	 * @returns Grades list
 	 */
-	public SimpleLinkedList getGrades() {
+	public SimpleLinkedList<Object> getGrades() {
 		return grades;
 		
 	}
@@ -38,14 +52,14 @@ public class Student extends Person{
 	 * @param list List of grades
 	 * Sets list of grades for student
 	 */
-	public void setGrades(SimpleLinkedList list) {
+	public void setGrades(SimpleLinkedList<Object> list) {
 		this.grades = list;
 	}
 	
 	/* The Get Courses method
 	 * @returns list of courses
 	 */
-	public SimpleLinkedList getCourses() {
+	public SimpleLinkedList<Object> getCourses() {
 		return courses;
 	}
 	
@@ -53,8 +67,10 @@ public class Student extends Person{
 	 * @param list List of Courses
 	 * Sets list of Courses for student
 	 */
-	public void setCourses (SimpleLinkedList list) {
+	public void setCourses (SimpleLinkedList<Object> list) {
 		this.courses = list;
 	}
+	
+	
 	
 }

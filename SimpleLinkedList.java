@@ -2,6 +2,7 @@
 
 class SimpleLinkedList<E> { 
   private Node<E> head;
+  private int size = 0;
   
   
   public void add(E item) { 
@@ -17,8 +18,13 @@ class SimpleLinkedList<E> {
     }
     
     tempNode.setNext(new Node<E>(item, null));
+    this.size++;
     return;
     
+  }
+  
+  public int getSize() {
+	  return this.size;
   }
   
   
@@ -89,6 +95,7 @@ class SimpleLinkedList<E> {
         }
       }
     }
+    this.size--;
     return null;
   }
   

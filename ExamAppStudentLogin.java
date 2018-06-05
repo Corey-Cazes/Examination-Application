@@ -1,11 +1,3 @@
-//HEADER LOLOLOLOL
-
-//student types in their id number to log in
-//program reads a list of students to find if it has data for that number
-//if it does; it "selects" that student
-//if it doesnt it runs the student through an "account creation"
-//once logged in it goes to studenthomepage
-
 //Imports
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -29,7 +21,7 @@ class ExamAppStudentLogin extends JFrame {
   //the text field has to be declared up here or the program freaks its beans
   JTextField numberEntry = new JTextField("Student ID Number");
   //this one is needed in several methods so HYUP
-  int IDtoFind;
+  static String IDtoFind;
   
   //constructor
   ExamAppStudentLogin() {
@@ -77,8 +69,7 @@ class ExamAppStudentLogin extends JFrame {
   class NumberSaver implements ActionListener{
     public void actionPerformed(ActionEvent event){
       System.out.println("text field listener running");
-      String takenString = numberEntry.getText();
-      IDtoFind = Integer.parseInt(takenString,10);
+      IDtoFind = numberEntry.getText();
       System.out.println(IDtoFind);
     }
   }
@@ -86,8 +77,7 @@ class ExamAppStudentLogin extends JFrame {
   //this detects the button press and acts appropriately
   class LoginButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent event)  { 
-      String takenString = numberEntry.getText();
-      IDtoFind = Integer.parseInt(takenString,10);
+      IDtoFind = numberEntry.getText();
       System.out.println(IDtoFind);
       System.out.println("Searching for Student");
       //run method to find if the student exists or not
@@ -96,8 +86,8 @@ class ExamAppStudentLogin extends JFrame {
       if (studentExists = true){
         Student currentStudent = new Student();
         currentStudent = findSpecificStudent();
-        new ExamAppStudentHome();
-        thisFrame.dispose();
+        thisFrame.dispose();  
+        new ExamAppStudentHome(currentStudent);
       }
       else {
         //if false -> run studentCreate
@@ -113,9 +103,9 @@ class ExamAppStudentLogin extends JFrame {
     Student searchingStudent = new Student();
     boolean studentFound = false;
     while (studentFound != true){
-      for (int count = 0; count >(/*student list*/.size()); count++){
-        searchingStudent = /*student list*/.get(count);
-        if (searchingStudent.IDNumber = IDtoFind){
+      for (int count = 0; count >(Student.studentList.size()); count++){
+        searchingStudent = Student.studentList.get(count);
+        if ((searchingStudent.getIDNumber()).equals(IDtoFind)){
           studentFound = true;
         }
       }
@@ -125,11 +115,11 @@ class ExamAppStudentLogin extends JFrame {
   
   //method to find whoever logged in
   public static Student findSpecificStudent(){
-    Student loggingInStudent = new Student;
-    Student selectedStudent = new Student;
-    for (int count = 0; count >(/*student list*/.size()); count++){
-      selectedStudent = /*student list*/.get(count);
-      if (selectedStudent.IDNumber = IDtoFind){
+    Student loggingInStudent = new Student();
+    Student selectedStudent = new Student();
+    for (int count = 0; count >(Student.studentList.size()); count++){
+      selectedStudent = Student.studentList.get(count);
+      if ((selectedStudent.getIDNumber()).equals(IDtoFind)){
         loggingInStudent = selectedStudent;
       }
     }

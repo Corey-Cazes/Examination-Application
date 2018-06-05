@@ -37,7 +37,7 @@ class ExamAppStudentCreate extends JFrame {
   JTextField course4Field = new JTextField("Course Code 4");
   JTextField course5Field = new JTextField("Course Code 5");
   //aforementioned contents
-  int idNum;
+  String idNum;
   String firstName;
   String lastName;
   String course1code;
@@ -137,8 +137,7 @@ class ExamAppStudentCreate extends JFrame {
   class NumberSaver implements ActionListener{
     public void actionPerformed(ActionEvent event){
       System.out.println("text field listener running - id number");
-      String idStr= idNumberField.getText();
-      idNum = Integer.parseInt(idStr,10);
+      idNum= idNumberField.getText();
       System.out.println(idNum);
     }
   }
@@ -207,14 +206,16 @@ class ExamAppStudentCreate extends JFrame {
       Student newStudent = new Student();
       newStudent.firstName = firstName;
       newStudent.lastName = lastName;
-      newStudent.IDNumber = idNum;
-      newStudent.courses.add(course1code);
-      newStudent.courses.add(course2code);
-      newStudent.courses.add(course3code);
-      newStudent.courses.add(course4code);
-      newStudent.courses.add(course5code);
+      newStudent.setIDNumber(idNum);
+      newStudent.addCourse(course1code);
+      newStudent.addCourse(course2code);
+      newStudent.addCourse(course3code);
+      newStudent.addCourse(course4code);
+      newStudent.addCourse(course5code);
+      newStudent.studentList.add(newStudent);
+      Student currentStudent = newStudent;
       //send the student to their home screen
-      new ExamAppStudentHome();
+      new ExamAppStudentHome(currentStudent);
       thisFrame.dispose();
     }
   }
@@ -224,3 +225,4 @@ class ExamAppStudentCreate extends JFrame {
     new ExamAppStudentCreate();
 
   }
+  

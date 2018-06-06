@@ -1,3 +1,11 @@
+//HEADER LOLOLOLOL
+
+//student types in their id number to log in
+//program reads a list of students to find if it has data for that number
+//if it does; it "selects" that student
+//if it doesnt it runs the student through an "account creation"
+//once logged in it goes to studenthomepage
+
 //Imports
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -83,7 +91,7 @@ class ExamAppStudentLogin extends JFrame {
       //run method to find if the student exists or not
       boolean studentExists = findStudent();
       //if true -> set current student to whoever just logged in and run studentHomepage
-      if (studentExists = true){
+      if (studentExists == true){
         Student currentStudent = new Student();
         currentStudent = findSpecificStudent();
         thisFrame.dispose();  
@@ -102,11 +110,13 @@ class ExamAppStudentLogin extends JFrame {
     //reads list of students and compares ID numbers
     Student searchingStudent = new Student();
     boolean studentFound = false;
-    while (studentFound != true){
-      for (int count = 0; count >(Student.studentList.size()); count++){
-        searchingStudent = Student.studentList.get(count);
-        if ((searchingStudent.getIDNumber()).equals(IDtoFind)){
-          studentFound = true;
+    if (Student.studentList.size() > 1){
+      while (studentFound != true){
+        for (int count = 0; count <(Student.studentList.size()); count++){
+          searchingStudent = Student.studentList.get(count);
+          if ((searchingStudent.getIDNumber()).equals(IDtoFind)){
+            studentFound = true;
+          }
         }
       }
     }
@@ -117,10 +127,12 @@ class ExamAppStudentLogin extends JFrame {
   public static Student findSpecificStudent(){
     Student loggingInStudent = new Student();
     Student selectedStudent = new Student();
-    for (int count = 0; count >(Student.studentList.size()); count++){
-      selectedStudent = Student.studentList.get(count);
-      if ((selectedStudent.getIDNumber()).equals(IDtoFind)){
-        loggingInStudent = selectedStudent;
+    if (Student.studentList.size() > 1){
+      for (int count = 0; count <(Student.studentList.size()); count++){
+        selectedStudent = Student.studentList.get(count);
+        if ((selectedStudent.getIDNumber()).equals(IDtoFind)){
+          loggingInStudent = selectedStudent;
+        }
       }
     }
     return loggingInStudent;

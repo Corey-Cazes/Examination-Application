@@ -5,19 +5,17 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.TextField;
 
 class MultipleChoiceSetupGUI extends JFrame { 
 
 
-  JFrame thisFrame;
+
+JFrame thisFrame;
   private String [] numbers = {"1","2","3","4"};
 
   public HintTextField questionField = new HintTextField("Enter Question Here");
@@ -27,7 +25,7 @@ class MultipleChoiceSetupGUI extends JFrame {
   public HintTextField ChoiceField4 = new HintTextField("Enter Fourth Choice Here");
   JComboBox<?> numBox = new JComboBox<Object>(numbers);
   
-  public Node tempNode = Test.tests.getLast();
+  public Node<?> tempNode = Test.tests.getLast();
   
  public Test tempTest = (Test) tempNode.getItem();
   
@@ -174,7 +172,7 @@ choicePanelMain.add(correctAnswerPanel);
     	tempTest.addMultipleChoice(multipleChoice);
       new QuestionTypeGUI();
       thisFrame.dispose();
-      // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
+      
     }
   }
   

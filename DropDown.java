@@ -1,7 +1,7 @@
 
 public class DropDown extends Question{
 	
-	private SimpleLinkedList answers = new SimpleLinkedList();
+	private SimpleLinkedList<String> answers = new SimpleLinkedList<String>();
 	private String answerKey;
 	private int answerKeyAsInt;
 	
@@ -11,10 +11,10 @@ public class DropDown extends Question{
 		this.type = 1;
 	}
 	
-	public SimpleLinkedList getAnswers() {
+	public SimpleLinkedList<String> getAnswers() {
 		return answers;
 	}
-	public void setAnswers(SimpleLinkedList answers) {
+	public void setAnswers(SimpleLinkedList<String> answers) {
 		this.answers = answers;
 	}
 	public String getAnswerKey() {

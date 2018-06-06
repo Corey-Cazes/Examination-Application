@@ -7,51 +7,63 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
-class ExaminationAppTitleFrame extends JFrame { 
+class TeacherLogin extends JFrame { 
 
   JFrame thisFrame;
   
+   public HintTextField loginField = new HintTextField("Enter Password");
+   
+  
   //Constructor - this runs first
-  ExaminationAppTitleFrame() { 
+  TeacherLogin() { 
     super("Examination Application");
     this.thisFrame = this; //lol 
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     
     //configure the window
-    this.setSize(400,200);    
+    this.setSize(500,300);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
+    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     this.setResizable (false);
+    
+    JPanel loginPanel = new JPanel();
+    loginPanel.setLayout(new FlowLayout());
+    
+    loginField.setPreferredSize(new Dimension(200,30));
     
     //Create a Panel for stuff
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
     
+    JLabel loginLabel = new JLabel("Password: ");
     
     //create a Panel for the buttons
     JPanel buttonPanel = new JPanel();
-    
+    //buttonPanel.setLayout(new FlowLayout());
     
      //Create two JButtons for the centerPanel
-    JButton teacherButton = new JButton("Teacher");
-    teacherButton.addActionListener(new TeacherButtonListener());
-    teacherButton.setSize(new Dimension(200,30));
-    JButton studentButton = new JButton("Student");
-    studentButton.addActionListener(new StudentButtonListener());
-    studentButton.setSize(new Dimension(200,30)); 
+    JButton loginButton = new JButton("Login");
+    loginButton.addActionListener(new LoginButtonListener());
+    loginButton.setSize(new Dimension(200,30));
+ 
     
     //Create some JLabels for the centerPanel
-    JLabel startLabel = new JLabel("Welcome to Examination Application");
-    JLabel startLabel2 = new JLabel("I am a...");
+    JLabel startLabel = new JLabel("Login");
+    
 
-    //add the buttons to the buttonPanel
-    buttonPanel.add(teacherButton);
-    buttonPanel.add(studentButton);
+    //add the buttons to the buttonPanel       
+    buttonPanel.add(loginButton);
+    loginPanel.add(loginLabel);
+    loginPanel.add(loginField);
 
+    
     //Add all panels to the mainPanel according to border layout
     mainPanel.add(buttonPanel,BorderLayout.SOUTH);
+    mainPanel.add(loginPanel, BorderLayout.CENTER);
     mainPanel.add(startLabel,BorderLayout.NORTH);
-    mainPanel.add(startLabel2,BorderLayout.CENTER);
+    
     
     //add the main panel to the frame
     this.add(mainPanel);
@@ -61,24 +73,18 @@ class ExaminationAppTitleFrame extends JFrame {
   }
   
   //This is an inner class that is used to detect a button press
-  class TeacherButtonListener implements ActionListener {  //this is the required class definition
+  class LoginButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    	new TeacherLogin();
-      thisFrame.dispose();
+    if (Teacher.getPassword().equals(loginField.getText().toString())) {
+    	new TeacherHomeGUI();
+    	thisFrame.dispose();
+    }
+      
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
   }
   
   //This is an inner class that is used to detect a button press
-  class StudentButtonListener implements ActionListener {  //this is the required class definition
-    public void actionPerformed(ActionEvent event)  {  
-    	int count = 0;
-      new DisplayMultipleChoiceGUI(new Test(), count);
-      thisFrame.dispose();
-      // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
-      
-    }
-  }
 
   //Main method starts this application
   public static void main(String[] args) { 

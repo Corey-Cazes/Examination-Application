@@ -63,11 +63,7 @@ class StudentTable extends JFrame {
     
     mainPanel.add(table, BorderLayout.NORTH);
     this.add(mainPanel);
-    
-
-    
-    
-
+  
     
     //Start the app
     this.setVisible(true);

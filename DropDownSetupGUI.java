@@ -5,14 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.TextField;
 
 class DropDownSetupGUI extends JFrame { 
 
@@ -28,7 +25,7 @@ class DropDownSetupGUI extends JFrame {
   public HintTextField ChoiceField5 = new HintTextField("Enter Fifth Choice Here");
   JComboBox<?> numBox = new JComboBox<Object>(numbers);
   
-  public Node tempNode = Test.tests.getLast();
+  public Node<?> tempNode = Test.tests.getLast();
   
  public Test tempTest = (Test) tempNode.getItem();
   

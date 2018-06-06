@@ -5,6 +5,8 @@
  */
 public class Teacher extends Person{
 	
+	private static String password = "Computer";
+	
 	//Class Variables
 	private SimpleLinkedList courses = new SimpleLinkedList();
 	private SimpleLinkedList students = new SimpleLinkedList();
@@ -53,6 +55,14 @@ public class Teacher extends Person{
 	 */
 	public void setTests(SimpleLinkedList tests) {
 		Tests = tests;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
+
+	public static void setPassword(String password) {
+		Teacher.password = password;
 	}
 
 }

@@ -1,14 +1,10 @@
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
-import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 
 public class HintTextField extends JTextField implements FocusListener
 {
-
-    private String hint;
 
     public HintTextField ()
     {
@@ -23,9 +19,8 @@ public class HintTextField extends JTextField implements FocusListener
 
     public void setHint(String hint)
     {
-        this.hint = hint;
         setUI(new HintTextFieldUI(hint, true));
-        //setText(this.hint);
+        
     }
 
 
@@ -39,7 +34,7 @@ public class HintTextField extends JTextField implements FocusListener
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

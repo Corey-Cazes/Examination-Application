@@ -5,7 +5,7 @@
  */
 public class MultipleChoice extends Question {
 
-	private SimpleLinkedList answers = new SimpleLinkedList();
+	private SimpleLinkedList<String> answers = new SimpleLinkedList<String>();
 	private String answerKey;
 	private int answerKeyAsInt;
 	
@@ -15,10 +15,10 @@ public class MultipleChoice extends Question {
 		this.type = 1;
 	}
 	
-	public SimpleLinkedList getAnswers() {
+	public SimpleLinkedList<String> getAnswers() {
 		return answers;
 	}
-	public void setAnswers(SimpleLinkedList answers) {
+	public void setAnswers(SimpleLinkedList<String> answers) {
 		this.answers = answers;
 	}
 	public String getAnswerKey() {
@@ -36,6 +36,10 @@ public class MultipleChoice extends Question {
 	
 	public void addAnswer(String answer) {
 		this.answers.add(answer);
+	}
+	
+	public String getAnswer(int num) {
+		return answers.get(num);
 	}
 	
 	

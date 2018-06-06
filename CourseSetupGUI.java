@@ -6,18 +6,17 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 
 class CourseSetupGUI extends JFrame { 
 
-  JFrame thisFrame;
+JFrame thisFrame;
   public HintTextField courseField = new HintTextField("Enter the course this test is intended for");
   JLabel courseLabel = new JLabel("Enter Course: ");
   public HintTextField nameField = new HintTextField("Enter the name of the test");
   JLabel nameLabel = new JLabel("Enter Name: ");
   
-  public Node tempNode = Test.tests.getLast();
+  public Node<?> tempNode = Test.tests.getLast();
   
  public Test tempTest = (Test) tempNode.getItem();
   

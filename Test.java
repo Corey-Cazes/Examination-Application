@@ -6,10 +6,10 @@
 public class Test {
 
 	
-	static SimpleLinkedList tests = new SimpleLinkedList();
+	static SimpleLinkedList<Test> tests = new SimpleLinkedList<Test>();
 	
 	//Class Variables
-	private SimpleLinkedList questions = new SimpleLinkedList();
+	private SimpleLinkedList<Question> questions = new SimpleLinkedList<Question>();
 	private String course;
 	private String name;
 	
@@ -20,7 +20,7 @@ public class Test {
 	/* The Get Questions method
 	 * @returns list of questions
 	 */
-	public SimpleLinkedList getQuestions() {
+	public SimpleLinkedList<Question> getQuestions() {
 		return questions;
 	}
 	
@@ -28,7 +28,7 @@ public class Test {
 	 * @param questions List of questions on test
 	 * Sets List of Questions on test
 	 */
-	public void setQuestions(SimpleLinkedList questions) {
+	public void setQuestions(SimpleLinkedList<Question> questions) {
 		this.questions = questions;
 	}
 	

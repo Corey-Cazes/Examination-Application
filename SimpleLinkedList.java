@@ -1,4 +1,4 @@
-//**********A template  for a simple linked list ********
+/**********A template  for a simple linked list ********/
 
 class SimpleLinkedList<E> {
   private Node<E> head;
@@ -52,7 +52,7 @@ class SimpleLinkedList<E> {
       return null;
     }
     while((tempNode.getNext()!=null)&&(gotItem == null)) {
-      //tempNode = tempNode.getNext();
+     
       if (pos == index){
         gotItem = tempNode.getItem();
       }

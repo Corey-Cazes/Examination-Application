@@ -73,7 +73,7 @@ class ExaminationAppTitleFrame extends JFrame {
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
     	int count = 0;
-      new DisplayMultipleChoiceGUI(new Test(), count);
+      new DisplayDropDownGUI(new Test(), count);
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       

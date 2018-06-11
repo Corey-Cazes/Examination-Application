@@ -11,6 +11,8 @@ import java.awt.Dimension;
 class CourseSetupGUI extends JFrame { 
 
 JFrame thisFrame;
+
+
   public HintTextField courseField = new HintTextField("Enter the course this test is intended for");
   JLabel courseLabel = new JLabel("Enter Course: ");
   public HintTextField nameField = new HintTextField("Enter the name of the test");
@@ -18,8 +20,10 @@ JFrame thisFrame;
   
   public Node<?> tempNode = Test.tests.getLast();
   
- public Test tempTest = (Test) tempNode.getItem();
   
+ public Test tempTest = (Test) tempNode.getItem();
+ 
+ 
   //Constructor - this runs first
   CourseSetupGUI() { 
     super("Examination Application");
@@ -28,20 +32,20 @@ JFrame thisFrame;
     
     //configure the window
     this.setSize(400,200);    
-    this.setLocationRelativeTo(null); //start the frame in the center of the screen
-    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+    this.setLocationRelativeTo(null);
     this.setResizable (false);
-    
+
     //Create a Panel for stuff
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
+    
+   
     
     //create a Panel for the buttons
     JPanel coursePanel = new JPanel();
     JPanel buttonPanel = new JPanel();
     JPanel namePanel = new JPanel();
     JPanel combinedPanel = new JPanel();
-    //buttonPanel.setLayout(new FlowLayout());
     
     coursePanel.add(courseLabel);
     coursePanel.add(courseField);
@@ -53,6 +57,8 @@ JFrame thisFrame;
     courseField.setPreferredSize(new Dimension(200,30));
     nameField.setPreferredSize(new Dimension(200,30));
     
+    
+    
      //Create two JButtons for the centerPanel
     JButton doneButton = new JButton("Done");
     doneButton.addActionListener(new DoneButtonListener());
@@ -61,9 +67,10 @@ JFrame thisFrame;
     
     //Create some JLabels for the centerPanel
     JLabel startLabel = new JLabel("Course Setup");
-    
+
 
     //add the buttons to the buttonPanel
+    buttonPanel.add(doneButton);
     buttonPanel.add(doneButton);
    
     
@@ -71,7 +78,6 @@ JFrame thisFrame;
     mainPanel.add(buttonPanel,BorderLayout.SOUTH);
     mainPanel.add(combinedPanel, BorderLayout.CENTER);
     mainPanel.add(startLabel,BorderLayout.NORTH);
-    
     
     //add the main panel to the frame
     this.add(mainPanel);

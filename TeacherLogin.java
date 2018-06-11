@@ -20,10 +20,12 @@ class TeacherLogin extends JFrame {
   TeacherLogin() { 
     super("Examination Application");
     this.thisFrame = this; //lol 
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+   
     
     //configure the window
-    this.setSize(500,300);    
+    this.setSize(400,150);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
     //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     this.setResizable (false);
@@ -47,6 +49,8 @@ class TeacherLogin extends JFrame {
     JButton loginButton = new JButton("Login");
     loginButton.addActionListener(new LoginButtonListener());
     loginButton.setSize(new Dimension(200,30));
+    
+    
  
     
     //Create some JLabels for the centerPanel
@@ -65,11 +69,14 @@ class TeacherLogin extends JFrame {
     mainPanel.add(startLabel,BorderLayout.NORTH);
     
     
+    
+    
     //add the main panel to the frame
     this.add(mainPanel);
     
     //Start the app
     this.setVisible(true);
+  
   }
   
   //This is an inner class that is used to detect a button press
@@ -77,7 +84,6 @@ class TeacherLogin extends JFrame {
     public void actionPerformed(ActionEvent event)  {  
     if (Teacher.getPassword().equals(loginField.getText().toString())) {
     	new TeacherHomeGUI();
-    	thisFrame.dispose();
     }
       
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
@@ -91,5 +97,7 @@ class TeacherLogin extends JFrame {
     new ExaminationAppTitleFrame();
 
   }
+  
+
   
 }

@@ -113,7 +113,9 @@ class ExamAppStudentLogin extends JFrame {
     if (Student.studentList.size() > 1){
       while (studentFound != true){
         for (int count = 0; count <(Student.studentList.size()); count++){
-          searchingStudent = Student.studentList.get(count);
+          if (Student.studentList.get(count) != null){
+            searchingStudent = Student.studentList.get(count);
+          }
           if ((searchingStudent.getIDNumber()).equals(IDtoFind)){
             studentFound = true;
           }

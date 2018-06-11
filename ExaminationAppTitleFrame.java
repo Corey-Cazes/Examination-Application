@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 
 class ExaminationAppTitleFrame extends JFrame { 
@@ -16,23 +17,22 @@ class ExaminationAppTitleFrame extends JFrame {
   ExaminationAppTitleFrame() { 
     super("Examination Application");
     this.thisFrame = this; //lol 
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
     //configure the window
     this.setSize(400,200);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
+    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     this.setResizable (false);
     
     //Create a Panel for stuff
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
     
-    
     //create a Panel for the buttons
     JPanel buttonPanel = new JPanel();
+    //buttonPanel.setLayout(new FlowLayout());
     
-    
-     //Create two JButtons for the centerPanel
+     //Create two JButtons for the buttonPanel
     JButton teacherButton = new JButton("Teacher");
     teacherButton.addActionListener(new TeacherButtonListener());
     teacherButton.setSize(new Dimension(200,30));
@@ -47,7 +47,7 @@ class ExaminationAppTitleFrame extends JFrame {
     //add the buttons to the buttonPanel
     buttonPanel.add(teacherButton);
     buttonPanel.add(studentButton);
-
+    
     //Add all panels to the mainPanel according to border layout
     mainPanel.add(buttonPanel,BorderLayout.SOUTH);
     mainPanel.add(startLabel,BorderLayout.NORTH);
@@ -63,20 +63,18 @@ class ExaminationAppTitleFrame extends JFrame {
   //This is an inner class that is used to detect a button press
   class TeacherButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    	new TeacherLogin();
+      System.out.println("Running Teacher GUI");
+      new TeacherHomeGUI();
       thisFrame.dispose();
-      // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
   }
   
   //This is an inner class that is used to detect a button press
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    	int count = 0;
-      new DisplayDropDownGUI(new Test(), count);
+      System.out.println("Running Student GUI");
+      new ExamAppStudentLogin();
       thisFrame.dispose();
-      // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
-      
     }
   }
 

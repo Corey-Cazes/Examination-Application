@@ -28,17 +28,18 @@ class ExamAppStudentTest extends JFrame{
   JFrame thisFrame;
   
   //constructor
-  ExamAppStudentTest() {
+  ExamAppStudentTest(Student currentStudent) {
     super("Examination Application");
     this.thisFrame = this;
     
     //declaring this up heeere
     //declare testList using a method that searches all tests and compares with the current students courses
-    Test[] testList = new Test[5];
+    SimpleLinkedList<Object> testList = new SimpleLinkedList<Object>();
     testList = loadTestList(currentStudent);
-    JComboBox<?> testSelect = new JComboBox<Object>(testList)
-  //configure the window
-  this.setSize(500,300);    
+    Test[] testListArray = testArrayCreate(testList);
+    JComboBox<?> testSelect = new JComboBox<Object>(testListArray);
+    //configure the window
+    this.setSize(500,300);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
     //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     this.setResizable (false);
@@ -51,9 +52,9 @@ class ExamAppStudentTest extends JFrame{
     //create labels, buttons, dropdown menu
     JLabel topLabel = new JLabel("Select the test you want to take");
     JButton goButton = new JButton("Go");
-    goButton.addActionListener(new goButtonListener);
+    goButton.addActionListener(new goButtonListener());
     JButton backButton = new JButton("Back");
-    backButton.addActionListener(new backButtonListener);
+    backButton.addActionListener(new backButtonListener());
     
     //add stuff to panels
     menuPanel.add(testSelect);
@@ -84,15 +85,34 @@ class ExamAppStudentTest extends JFrame{
  class backButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Bye");
-      new ExamAppStudentHome();
+      new ExamAppStudentHome(currentStudent);
       thisFrame.dispose();
     }
   }
     
  //methods
- puclic static Test[] loadTestList(currentStudent){
-   //for all 5 courses, read through the list of all tests and add the tests for that course to the list
-   //return the array of tests
+ public static SimpleLinkedList<Object> loadTestList(Student currentStudent){
+   SimpleLinkedList<Object> theseTests = new SimpleLinkedList<Object>();
+   SimpleLinkedList<Object> courseList = currentStudent.getCourses();
+   for (int cnt = 0; cnt < courseList.size(); cnt++){
+     String theCourse = courseList.get(cnt);
+     for (int inCnt = 0; inCnt < Test.tests.size(); inCnt++){
+       Test thatTest = Test.tests.get(inCnt);
+       String testCourse = thatTest.getCoursesAvailable();
+       if (theCourse.equals(testCourse)){
+         theseTests.add(thatTest);
+       }
+     }
+   }
+   return theseTests;
  }
-   
+ 
+ public static Test[] testArrayCreate(SimpleLinkedList testList){
+   Test[] testArray = new Test[5];
+   for (int count = 0; count < 5; count++){
+     Test thatTest = testList.get(count);
+     testArray[count] = thatTest;
+   }
+   return testArray;
+ }
 }

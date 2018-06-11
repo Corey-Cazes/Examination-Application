@@ -1,9 +1,11 @@
-//heeadderr kek
-
-//student create account
-//appears when a student not already in the system tries to log in
-//takes input of student number, course codes, etc and creates a new student object and adds it to the list
-//after object is created, it goes to the homepage
+/* ExamAppStudentCreate
+ * Authors: Dawn Murphy and Corey Cazes
+ * Date: Jun 1, 2018
+ * student create account
+ * appears when a student not already in the system tries to log in
+ * takes input of student number, course codes, etc and creates a new student object and adds it to the list
+ * after object is created, it goes to the homepage
+*/
 
 //Imports
 import javax.swing.JFrame;

@@ -1,8 +1,8 @@
-//uuu hheader lul
-
-//set up gui and stuff
-
-//show what tests are available to the current student
+/* ExamAppStudentTest
+ * Authors: Dawn Murphy and Corey Cazes
+ * Date: Jun 6, 2018
+ * show what tests are available to the current student
+*/
 
 //Imports
 import javax.swing.JFrame;

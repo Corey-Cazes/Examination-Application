@@ -1,4 +1,8 @@
-//heedeer
+/* ExamAppStudentGrades
+ * Authors: Dawn Murphy and Corey Cazes
+ * Date: Jun 6, 2018
+ * allows the logged in student to look at their grades
+*/
 
 //Imports
 import javax.swing.JFrame;

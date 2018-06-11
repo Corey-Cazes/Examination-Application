@@ -1,7 +1,10 @@
-//header
+/* ExamAppStudentHome
+ * Authors: Dawn Murphy and Corey Cazes
+ * Date: Jun 1, 2018
+ * student homepage
+ * shows their grades & tests available
+*/
 
-//student homepage
-//shows their grades & tests avaiavle
 
 //Imports
 import javax.swing.JFrame;

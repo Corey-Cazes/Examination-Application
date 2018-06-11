@@ -1,3 +1,9 @@
+/* ExaminationAppTitleFrame
+ * Authors: Dawn Murphy and Corey Cazes
+ * Date: May 30, 2018
+ * title frame, allows user to select teacher or student
+*/
+
 //Imports
 import javax.swing.JFrame;
 import javax.swing.JButton;

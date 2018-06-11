@@ -54,6 +54,7 @@ class ExamAppStudentTest extends JFrame{
     JButton goButton = new JButton("Go");
     goButton.addActionListener(new goButtonListener());
     JButton backButton = new JButton("Back");
+    backButton.putClientProperty("Student", currentStudent);
     backButton.addActionListener(new backButtonListener());
     
     //add stuff to panels
@@ -85,6 +86,7 @@ class ExamAppStudentTest extends JFrame{
  class backButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Bye");
+      Student currentStudent = ((Student)((JButton)event.getSource()).getClientProperty("Student"));
       new ExamAppStudentHome(currentStudent);
       thisFrame.dispose();
     }

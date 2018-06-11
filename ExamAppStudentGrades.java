@@ -48,6 +48,7 @@ class ExamAppStudentGrades extends JFrame{
     JLabel course4label = new JLabel(courseList.get(3) + ":  " + gradesList.get(3));
     JLabel course5label = new JLabel(courseList.get(4) + ":  " + gradesList.get(4));
     JButton backButton = new JButton("Back");
+    backButton.putClientProperty("Student", currentStudent);
     backButton.addActionListener(new backButtonListener());
     
     //add stuff to panel
@@ -71,6 +72,7 @@ class ExamAppStudentGrades extends JFrame{
  class backButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Bye");
+      Student currentStudent = ((Student)((JButton)event.getSource()).getClientProperty("Student"));
       new ExamAppStudentHome(currentStudent);
       thisFrame.dispose();
     }

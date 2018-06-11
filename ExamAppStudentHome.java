@@ -43,8 +43,10 @@ class ExamAppStudentHome extends JFrame{
     JLabel topLabel = new JLabel("Student Homepage");
     JLabel nameLabel = new JLabel("Welcome, "+ currentStudent.firstName);
     JButton gradesButton = new JButton("View Grades");
+    gradesButton.putClientProperty("Student", currentStudent);
     gradesButton.addActionListener(new GradesButtonListener());
     JButton testButton = new JButton("Take Tests");
+    testButton.putClientProperty("Student", currentStudent);
     testButton.addActionListener(new TestButtonListener());
     JButton logoutButton = new JButton("Log out");
     logoutButton.addActionListener(new LogoutButtonLsitener());
@@ -72,6 +74,7 @@ class ExamAppStudentHome extends JFrame{
   class TestButtonListener implements ActionListener { 
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Showing list of tests");
+      Student currentStudent = ((Student)((JButton)event.getSource()).getClientProperty("Student"));
       new ExamAppStudentTest(currentStudent);
       thisFrame.dispose();
     }
@@ -80,6 +83,7 @@ class ExamAppStudentHome extends JFrame{
   class GradesButtonListener implements ActionListener { 
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Showing list of grades");
+      Student currentStudent = ((Student)((JButton)event.getSource()).getClientProperty("Student"));
       new ExamAppStudentGrades(currentStudent);
       thisFrame.dispose();
     }

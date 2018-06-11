@@ -34,10 +34,10 @@ class ExamAppStudentTest extends JFrame{
     
     //declaring this up heeere
     //declare testList using a method that searches all tests and compares with the current students courses
-    SimpleLinkedList<Object> testList = new SimpleLinkedList<Object>();
+    SimpleLinkedList<Test> testList = new SimpleLinkedList<Test>();
     testList = loadTestList(currentStudent);
     Test[] testListArray = testArrayCreate(testList);
-    JComboBox<?> testSelect = new JComboBox<Object>(testListArray);
+    JComboBox<?> testSelect = new JComboBox<Test>(testListArray);
     //configure the window
     this.setSize(500,300);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
@@ -93,14 +93,14 @@ class ExamAppStudentTest extends JFrame{
   }
     
  //methods
- public static SimpleLinkedList<Object> loadTestList(Student currentStudent){
-   SimpleLinkedList<Object> theseTests = new SimpleLinkedList<Object>();
-   SimpleLinkedList<Object> courseList = currentStudent.getCourses();
+ public static SimpleLinkedList<Test> loadTestList(Student currentStudent){
+   SimpleLinkedList<Test> theseTests = new SimpleLinkedList<Test>();
+   SimpleLinkedList<String> courseList = currentStudent.getCourses();
    for (int cnt = 0; cnt < courseList.size(); cnt++){
      String theCourse = courseList.get(cnt);
      for (int inCnt = 0; inCnt < Test.tests.size(); inCnt++){
        Test thatTest = Test.tests.get(inCnt);
-       String testCourse = thatTest.getCoursesAvailable();
+       String testCourse = thatTest.getCourse();
        if (theCourse.equals(testCourse)){
          theseTests.add(thatTest);
        }

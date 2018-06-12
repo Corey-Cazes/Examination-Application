@@ -1,10 +1,7 @@
-/* ExamAppStudentHome
- * Authors: Dawn Murphy and Corey Cazes
- * Date: Jun 1, 2018
- * student homepage
- * shows their grades & tests available
-*/
+//header
 
+//student homepage
+//shows their grades & tests avaiavle
 
 //Imports
 import javax.swing.JFrame;
@@ -12,15 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
-import java.awt.Dimension;
-import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 class ExamAppStudentHome extends JFrame{
   
@@ -44,7 +34,7 @@ class ExamAppStudentHome extends JFrame{
     
     //Create Labels, Buttons, Etc
     JLabel topLabel = new JLabel("Student Homepage");
-    JLabel nameLabel = new JLabel("Welcome, "+ currentStudent.firstName);
+    JLabel nameLabel = new JLabel("Welcome, "+ currentStudent.getFirstName());
     JButton gradesButton = new JButton("View Grades");
     gradesButton.putClientProperty("Student", currentStudent);
     gradesButton.addActionListener(new GradesButtonListener());

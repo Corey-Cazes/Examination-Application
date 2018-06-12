@@ -1,26 +1,13 @@
-/* ExamAppStudentGrades
- * Authors: Dawn Murphy and Corey Cazes
- * Date: Jun 6, 2018
- * allows the logged in student to look at their grades
-*/
+//heedeer
 
 //Imports
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Component;
-import java.awt.Container;
 import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
-import java.awt.Dimension;
-import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 class ExamAppStudentGrades extends JFrame{
   
@@ -42,10 +29,10 @@ class ExamAppStudentGrades extends JFrame{
     mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
     
     //load variables for labels
-    SimpleLinkedList<Object> courseList = currentStudent.getCourses();
+    SimpleLinkedList<String> courseList = currentStudent.getCourses();
     SimpleLinkedList<Object> gradesList = currentStudent.getGrades();
     //create labels, buttons, listeners
-    JLabel topLabel = new JLabel("Grades for " + currentStudent.firstName);
+    JLabel topLabel = new JLabel("Grades for " + currentStudent.getFirstName());
     JLabel course1label = new JLabel(courseList.get(0) + ":  " + gradesList.get(0));
     JLabel course2label = new JLabel(courseList.get(1) + ":  " + gradesList.get(1));
     JLabel course3label = new JLabel(courseList.get(2) + ":  " + gradesList.get(2));

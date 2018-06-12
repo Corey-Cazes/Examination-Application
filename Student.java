@@ -9,7 +9,7 @@ public class Student extends Person{
 	public static SimpleLinkedList<Student> studentList = new SimpleLinkedList<Student>();
 	private String IDNumber;
 	private SimpleLinkedList<Object> grades = new SimpleLinkedList<Object>();
-	private SimpleLinkedList<Object> courses = new SimpleLinkedList<Object>();
+	private SimpleLinkedList<String> courses = new SimpleLinkedList<String>();
 	
 	/* The Get IDNumber method
 	 * @returns IDNumber
@@ -48,6 +48,10 @@ public class Student extends Person{
 		
 	}
 	
+	public void addCourse(String course) {
+		this.courses.add(course);
+	}
+	
 	/* The setGrades method
 	 * @param list List of grades
 	 * Sets list of grades for student
@@ -59,7 +63,7 @@ public class Student extends Person{
 	/* The Get Courses method
 	 * @returns list of courses
 	 */
-	public SimpleLinkedList<Object> getCourses() {
+	public SimpleLinkedList<String> getCourses() {
 		return courses;
 	}
 	
@@ -67,7 +71,7 @@ public class Student extends Person{
 	 * @param list List of Courses
 	 * Sets list of Courses for student
 	 */
-	public void setCourses (SimpleLinkedList<Object> list) {
+	public void setCourses (SimpleLinkedList<String> list) {
 		this.courses = list;
 	}
 	

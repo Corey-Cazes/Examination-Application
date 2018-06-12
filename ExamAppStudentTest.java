@@ -9,18 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Component;
-import java.awt.Container;
 import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
-import java.awt.Dimension;
-import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import javax.swing.JComboBox;
 
 class ExamAppStudentTest extends JFrame{
@@ -109,10 +100,10 @@ class ExamAppStudentTest extends JFrame{
    return theseTests;
  }
  
- public static Test[] testArrayCreate(SimpleLinkedList testList){
+ public static Test[] testArrayCreate(SimpleLinkedList<?> testList){
    Test[] testArray = new Test[5];
    for (int count = 0; count < 5; count++){
-     Test thatTest = testList.get(count);
+     Test thatTest = (Test) testList.get(count);
      testArray[count] = thatTest;
    }
    return testArray;

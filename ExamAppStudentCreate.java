@@ -1,29 +1,20 @@
-/* ExamAppStudentCreate
- * Authors: Dawn Murphy and Corey Cazes
- * Date: Jun 1, 2018
- * student create account
- * appears when a student not already in the system tries to log in
- * takes input of student number, course codes, etc and creates a new student object and adds it to the list
- * after object is created, it goes to the homepage
-*/
+//heeadderr kek
+
+//student create account
+//appears when a student not already in the system tries to log in
+//takes input of student number, course codes, etc and creates a new student object and adds it to the list
+//after object is created, it goes to the homepage
 
 //Imports
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Component;
-import java.awt.Container;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
-import java.awt.Dimension;
 import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 class ExamAppStudentCreate extends JFrame {
   
@@ -206,15 +197,15 @@ class ExamAppStudentCreate extends JFrame {
       System.out.println ("pretend this adds you to the system");
       //add the student to the system lemow
       Student newStudent = new Student();
-      newStudent.firstName = firstName;
-      newStudent.lastName = lastName;
+      newStudent.setFirstName (firstName);
+      newStudent.setLastName(lastName);
       newStudent.setIDNumber(idNum);
       newStudent.addCourse(course1code);
       newStudent.addCourse(course2code);
       newStudent.addCourse(course3code);
       newStudent.addCourse(course4code);
       newStudent.addCourse(course5code);
-      newStudent.studentList.add(newStudent);
+      Student.studentList.add(newStudent);
       Student currentStudent = newStudent;
       //send the student to their home screen
       new ExamAppStudentHome(currentStudent);

@@ -1,12 +1,10 @@
-/* ExamAppStudentLogin
- * Authors: Dawn Murphy and Corey Cazes
- * Date: May 31, 2018
- * student types in their id number to log in
- * program reads a list of students to find if it has data for that number
- * if it does; it "selects" that student
- * if it doesnt it runs the student through an "account creation"
- * once logged in it goes to studenthomepage
-*/
+//HEADER LOLOLOLOL
+
+//student types in their id number to log in
+//program reads a list of students to find if it has data for that number
+//if it does; it "selects" that student
+//if it doesnt it runs the student through an "account creation"
+//once logged in it goes to studenthomepage
 
 //Imports
 import javax.swing.JFrame;
@@ -17,12 +15,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
-import java.awt.Dimension;
 import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 class ExamAppStudentLogin extends JFrame {
   

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 class ExamAppStudentHome extends JFrame{
   
@@ -86,10 +87,50 @@ class ExamAppStudentHome extends JFrame{
   class LogoutButtonLsitener implements ActionListener {
     public void actionPerformed (ActionEvent event) {
       System.out.println("Logging Out");
-      //sometjhing should go here to save all the stuff to filei/o so the program doesnt get reset every time
+      //save stuff to the file IO
+      saveData();
       new ExaminationAppTitleFrame();
       thisFrame.dispose();
     }
+  }
+  
+  //METHODS
+  //save data to file i/o
+  //gets all the students and tests and saves them to some files
+  public static void saveData(){
+    //obtain the data
+    SimpleLinkedList<Student> studentList = currentStudent.studentList;
+    SimpleLinkedList<Test> testList = Test.tests;
+    //save the students to a file
+    //declare file+printwriter
+    File studentFile = new File ("studentFile.txt");
+    PrintWriter studentFileWriter = new PrintWriter(studentFile);
+    //print each student
+    for (int sCount = 0; sCount < studentList.size(); sCount++){
+      Student printStudent = studentList.get(sCount);
+      studentFileWriter.println( (printStudent.getIDNumber())+" "+(printStudent.getGrades.get(0))+" "+(printStudent.getGrades.get(1))+" "+(printStudent.getGrades.get(2))+" "+(printStudent.getGrades.get(3))+" "+(printStudent.getGrades.get(4))+" "+
+                                (printStudent.getCourses.get(0))+" "+(printStudent.getCourses.get(2))+" "+(printStudent.getCourses.get(3))+" "+(printStudent.getCourses.get(4))+" "+(printStudent.getCourses.get(5)));
+    }
+    //close printwriter
+    studentFileWriter.close();
+    
+    //save the tests to a file
+    //declare file+printwriter
+    File testFile = new File ("testFile.txt");
+    PrintWriter testFileWriter = new PrintWriter(testFile);
+    //print each test
+    for (int tCount = 0; tCount < testList.size(); tCount++){
+      Test printTest = testList.get(tCount);
+      testFileWriter.println( (printTest.getName())+" "(printTest.getCourse()));
+      SimpleLinkedList<Question> questionList = printTest.getQuestions();
+      for (int qCount = 0; qCount < questionList.size(); qCount++){
+        printQuestion = questionList.get(qCount);
+        testFileWriter.println( (printQuestion.getType())+" "+(printQuestion.getQuestion()));
+      }
+      testFileWriter.println("%");
+    }
+    //close printwriter
+    testFileWriter.close();
   }
   
 }

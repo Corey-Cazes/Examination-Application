@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import java.io.File;
 
 class ExaminationAppTitleFrame extends JFrame { 
 
@@ -58,12 +59,13 @@ class ExaminationAppTitleFrame extends JFrame {
     
     //Start the app
     this.setVisible(true);
+    loadData();
   }
   
   //This is an inner class that is used to detect a button press
   class TeacherButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    	new TeacherLogin();
+     new TeacherLogin();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
@@ -72,11 +74,67 @@ class ExaminationAppTitleFrame extends JFrame {
   //This is an inner class that is used to detect a button press
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    new 	ExamAppStudentLogin();
+    new  ExamAppStudentLogin();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
-      
     }
+    
+    //MEthod to load from the file IO
+    public static void loadData(){
+      //load students
+      //create list to hold students
+      SimpleLinkedList<Student> readStudentList = new SimpleLinkedList<Student>;
+      //initialize file and reader
+      File studentFile = new File("studentFile.txt");
+      Scanner studentFileScanner = new Scanner(studentFile);
+      //read in each student
+      while (studentFileScanner.hasNext()){
+        Student readStudent = new Student();
+        readStudent.setIDNumber(studentFileScanner.next());
+        SimpleLinkedList<Object> readGrades = new SimpleLinkedList<Object>;
+        for (int gCount = 0; gCount > 5; gCount++){
+          readGrades.add(studentFileScanner.next());
+        }
+        readStudent.setGrades(readGrades);
+        SimpleLinkedList<String> readCourses = new SimpleLinkedList<String>;
+        for (int cCount = 0; cCount > 5; cCount++){
+          readCourses.add(studentFileScanner.next());
+        }
+        readStudent.setCourses(readCourses);
+      //add student to list
+        readStudentList.add(readStudent);
+      }
+      //set universal student list to this one
+      Student.studentList = readStudentList;
+      //close scanner
+      studentFileScanner.close();
+      
+      //load tests
+      //create list to hold tests
+      SimpleLinkedList<Test> readTestList = new SimpleLinkedList<Test>;
+      //initialize file and reader
+      File testFile = new File("testFile.txt");
+      Scanner testFileReader = new Scanner(testFile);
+      //read in every test
+      while(testFileReader.hasNext()){
+        Test readTest = new Test();
+        readTest.setName(testFileReader.next());
+        readTest.setCoursesAvailable(testFileReader.next());
+        SimpleLinkedList<Question> readQuestions = new SimpleLinkedList<Question>;
+        while(testFileReader.next != "%"){
+          Question readQuestion = new Question();
+          readQuestion.setType(testFileReader.next());
+          readQuestion.setQuestion(testFileReader.next());
+          readQuestions.add(readQuestion);
+        }
+        readTest.setQuestions(readQuestions);
+        //add test to list
+        readTestList.add(readTest);
+      }
+      //set universal test list to this one
+      Test.tests = readTestList;
+      //close Scanner
+      testFileReader.close();
   }
 
   //Main method starts this application

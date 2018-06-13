@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import java.io.File;
 
 class TeacherHomeGUI extends JFrame { 
 
@@ -68,7 +69,7 @@ class TeacherHomeGUI extends JFrame {
   class TeacherButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
     Test.tests.add(new Test());
-    	new QuestionTypeGUI();
+     new QuestionTypeGUI();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
@@ -78,7 +79,7 @@ class TeacherHomeGUI extends JFrame {
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
     System.out.println("HeyHeyJeu");  
-    	new StudentTable();
+     new StudentTable();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       
@@ -88,11 +89,53 @@ class TeacherHomeGUI extends JFrame {
   //This is an inner class that is used to detect a button press
   class LogOutButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    	new ExaminationAppTitleFrame();
+      new ExaminationAppTitleFrame();
+      //something to save fileio
+      saveData();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
       
     }
+    
+    //METHODS
+  //save data to file i/o
+  //gets all the students and tests and saves them to some files
+  public static void saveData(){
+    //obtain the data
+    SimpleLinkedList<Student> studentList = currentStudent.studentList;
+    SimpleLinkedList<Test> testList = Test.tests;
+    //save the students to a file
+    //declare file+printwriter
+    File studentFile = new File ("studentFile.txt");
+    PrintWriter studentFileWriter = new PrintWriter(studentFile);
+    //print each student
+    for (int sCount = 0; sCount < studentList.size(); sCount++){
+      Student printStudent = studentList.get(sCount);
+      studentFileWriter.println( (printStudent.getIDNumber())+" "+(printStudent.getGrades.get(0))+" "+(printStudent.getGrades.get(1))+" "+(printStudent.getGrades.get(2))+" "+(printStudent.getGrades.get(3))+" "+(printStudent.getGrades.get(4))+" "+
+                                (printStudent.getCourses.get(0))+" "+(printStudent.getCourses.get(2))+" "+(printStudent.getCourses.get(3))+" "+(printStudent.getCourses.get(4))+" "+(printStudent.getCourses.get(5)));
+    }
+    //close printwriter
+    studentFileWriter.close();
+    
+    //save the tests to a file
+    //declare file+printwriter
+    File testFile = new File ("testFile.txt");
+    PrintWriter testFileWriter = new PrintWriter(testFile);
+    //print each test
+    for (int tCount = 0; tCount < testList.size(); tCount++){
+      Test printTest = testList.get(tCount);
+      testFileWriter.println( (printTest.getName())+" "(printTest.getCourse()));
+      SimpleLinkedList<Question> questionList = printTest.getQuestions();
+      for (int qCount = 0; qCount < questionList.size(); qCount++){
+        printQuestion = questionList.get(qCount);
+        testFileWriter.println( (printQuestion.getType())+" "+(printQuestion.getQuestion()));
+      }
+       testFileWriter.println("%");
+    }
+    //close printwriter
+    testFileWriter.close();
+  }
+    
   }
 
   //Main method starts this application

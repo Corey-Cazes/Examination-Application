@@ -18,6 +18,8 @@ class ExamAppStudentTest extends JFrame{
   
   JFrame thisFrame;
   
+  static Test test; 
+  
   //constructor
   ExamAppStudentTest(Student currentStudent) {
     super("Examination Application");
@@ -30,6 +32,7 @@ class ExamAppStudentTest extends JFrame{
     Test[] testListArray = testArrayCreate(testList);
     String[] testNameArray = testNameArrayCreate(testListArray);
     JComboBox<?> testSelect = new JComboBox<String>(testNameArray);
+    ExamAppStudentTest.test = testList.get(testSelect.getSelectedIndex());
     //configure the window
     this.setSize(500,300);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
@@ -69,7 +72,9 @@ class ExamAppStudentTest extends JFrame{
   class goButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Going forwards");
-      //new whateverrunstheactualtest();
+      StudentTestMainFrame.setTest(test);
+     StudentTestMainFrame.setQuestionList(test.getQuestions());
+     StudentTestMainFrame.initiateTest();
       thisFrame.dispose();
     }
   }
@@ -117,9 +122,5 @@ class ExamAppStudentTest extends JFrame{
      nameArray[count] = testName;
    }
    return nameArray;
- }
- 
- private Object makeObj(final String item){
-   return new Object() {public String toString() {return item; } };
  }
 }

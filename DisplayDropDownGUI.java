@@ -14,6 +14,8 @@ import java.awt.FlowLayout;
 class DisplayDropDownGUI extends JFrame {
 
 	JFrame thisFrame;
+	
+	static int num;
 
 	JComboBox<String> dropDown = new JComboBox<String>();
 
@@ -26,34 +28,29 @@ class DisplayDropDownGUI extends JFrame {
 		// configure the window
 		this.setSize(400, 200);
 		this.setLocationRelativeTo(null); // start the frame in the center of the screen
-		// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 
+		DisplayDropDownGUI.num = num;
 		
-		//SimpleLinkedList<?> listQuestion = test.getQuestions();
-		
-
+		SimpleLinkedList<?> listQuestion = test.getQuestions();
 		DropDown dropDownQuestion = new DropDown();
+		dropDownQuestion = (DropDown) listQuestion.get(num);
 		
-		//SimpleLinkedList <String>listAnswers = dropDownQuestion.getAnswers();
+		SimpleLinkedList <String>listAnswers = dropDownQuestion.getAnswers();
 		
-		//dropDownQuestion = (DropDown) listQuestion.get(num);
+		
 		
 		String [] answers = new String [5];
 		
-		//answers[0] =  listAnswers.get(0);
-		//answers[1] =  listAnswers.get(1);
-		//answers[2] =  listAnswers.get(2);
-		//answers[3] =  listAnswers.get(3);
-		//answers[4] =  listAnswers.get(4);
+		answers[0] =  listAnswers.get(0);
+		answers[1] =  listAnswers.get(1);
+		answers[2] =  listAnswers.get(2);
+		answers[3] =  listAnswers.get(3);
+		answers[4] =  listAnswers.get(4);
+
 		
-		answers[0] =  "1";
-		answers[1] =  "2";
-		answers[2] =  "3";
-		answers[3] =  "4";
-		answers[4] =  "5";
-		
-		dropDownQuestion.setQuestion("What is 3+2?");
+
 		
     dropDown.addItem(answers[0]);
     dropDown.addItem(answers[1]);
@@ -92,7 +89,7 @@ class DisplayDropDownGUI extends JFrame {
 	// This is an inner class that is used to detect a button press
 	class DoneButtonListener implements ActionListener { // this is the required class definition
 		public void actionPerformed(ActionEvent event) {
-			
+				StudentTestMainFrame.nextQuestion(num);
 			thisFrame.dispose();
 			// new [name of teacher program]; //create a new FunkyFrame (another file that
 			// extends JFrame)

@@ -84,6 +84,7 @@ class TeacherLogin extends JFrame {
     public void actionPerformed(ActionEvent event)  {  
     if (Teacher.getPassword().equals(loginField.getText().toString())) {
     	new TeacherHomeGUI();
+    	thisFrame.dispose();
     }
       
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)

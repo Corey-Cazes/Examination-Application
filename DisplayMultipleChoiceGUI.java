@@ -16,6 +16,8 @@ class DisplayMultipleChoiceGUI extends JFrame {
 
 	JFrame thisFrame;
 
+	static int num;
+	
 	JCheckBox box1 = new JCheckBox();
 	JCheckBox box2 = new JCheckBox();
 	JCheckBox box3 = new JCheckBox();
@@ -30,26 +32,18 @@ class DisplayMultipleChoiceGUI extends JFrame {
 		// configure the window
 		this.setSize(400, 200);
 		this.setLocationRelativeTo(null); // start the frame in the center of the screen
-		// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 
-		// SimpleLinkedList listQuestion = test.getQuestions();
+		DisplayMultipleChoiceGUI.num = num;
+		 SimpleLinkedList<Question> listQuestion = test.getQuestions();
 
-		// MultipleChoice multipleChoiceQuestion = (MultipleChoice)
-		// listQuestion.get(num);
 
 		MultipleChoice multipleChoiceQuestion = new MultipleChoice();
+		
+		multipleChoiceQuestion = (MultipleChoice) listQuestion.get(num);
 
-		SimpleLinkedList<String> listQuestion = new SimpleLinkedList<String>();
 
-		listQuestion.add("1");
-		listQuestion.add("2");
-		listQuestion.add("3");
-		listQuestion.add("4");
-
-		multipleChoiceQuestion.setQuestion("What is 2+2");
-		multipleChoiceQuestion.setAnswerKeyAsInt(3);
-		multipleChoiceQuestion.setAnswers(listQuestion);
 
 		// Create a Panel for stuff
 		JPanel mainPanel = new JPanel();
@@ -119,6 +113,8 @@ class DisplayMultipleChoiceGUI extends JFrame {
 	// This is an inner class that is used to detect a button press
 	class DoneButtonListener implements ActionListener { // this is the required class definition
 		public void actionPerformed(ActionEvent event) {
+			StudentTestMainFrame.nextQuestion(num);
+			
 			
 			thisFrame.dispose();
 			// new [name of teacher program]; //create a new FunkyFrame (another file that

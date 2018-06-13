@@ -1,13 +1,13 @@
 
 public class ShortAnswer extends Question{
 
-	private SimpleLinkedList answerKey = new SimpleLinkedList();
+	private SimpleLinkedList<String> answerKey = new SimpleLinkedList<String>();
 
-	public SimpleLinkedList getAnswerKey() {
+	public SimpleLinkedList<String> getAnswerKey() {
 		return answerKey;
 	}
 
-	public void setAnswerKey(SimpleLinkedList answerKey) {
+	public void setAnswerKey(SimpleLinkedList<String> answerKey) {
 		this.answerKey = answerKey;
 	}
 	

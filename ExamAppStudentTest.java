@@ -28,7 +28,8 @@ class ExamAppStudentTest extends JFrame{
     SimpleLinkedList<Test> testList = new SimpleLinkedList<Test>();
     testList = loadTestList(currentStudent);
     Test[] testListArray = testArrayCreate(testList);
-    JComboBox<?> testSelect = new JComboBox<Test>(testListArray);
+    String[] testNameArray = testNameArrayCreate(testListArray);
+    JComboBox<?> testSelect = new JComboBox<String>(testNameArray);
     //configure the window
     this.setSize(500,300);    
     this.setLocationRelativeTo(null); //start the frame in the center of the screen
@@ -107,5 +108,18 @@ class ExamAppStudentTest extends JFrame{
      testArray[count] = thatTest;
    }
    return testArray;
+ }
+ 
+ public static String[] testNameArrayCreate(Test[] testListArray){
+   String[] nameArray = new String[5];
+   for (int count = 0; count < 5; count ++){
+     String testName = testListArray[count].getName();
+     nameArray[count] = testName;
+   }
+   return nameArray;
+ }
+ 
+ private Object makeObj(final String item){
+   return new Object() {public String toString() {return item; } };
  }
 }

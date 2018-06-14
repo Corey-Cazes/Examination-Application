@@ -7,10 +7,11 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
-import java.io.File;
+import java.io.*;
+import java.util.Scanner;
 
 class ExaminationAppTitleFrame extends JFrame { 
-
+  
   JFrame thisFrame;
   
   //Constructor - this runs first
@@ -33,7 +34,7 @@ class ExaminationAppTitleFrame extends JFrame {
     JPanel buttonPanel = new JPanel();
     
     
-     //Create two JButtons for the centerPanel
+    //Create two JButtons for the centerPanel
     JButton teacherButton = new JButton("Teacher");
     teacherButton.addActionListener(new TeacherButtonListener());
     teacherButton.setSize(new Dimension(200,30));
@@ -44,11 +45,11 @@ class ExaminationAppTitleFrame extends JFrame {
     //Create some JLabels for the centerPanel
     JLabel startLabel = new JLabel("Welcome to Examination Application");
     JLabel startLabel2 = new JLabel("I am a...");
-
+    
     //add the buttons to the buttonPanel
     buttonPanel.add(teacherButton);
     buttonPanel.add(studentButton);
-
+    
     //Add all panels to the mainPanel according to border layout
     mainPanel.add(buttonPanel,BorderLayout.SOUTH);
     mainPanel.add(startLabel,BorderLayout.NORTH);
@@ -59,13 +60,13 @@ class ExaminationAppTitleFrame extends JFrame {
     
     //Start the app
     this.setVisible(true);
-    loadData();
+    boolean dataLoaded = loadData();
   }
   
   //This is an inner class that is used to detect a button press
   class TeacherButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-     new TeacherLogin();
+      new TeacherLogin();
       thisFrame.dispose();
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
@@ -74,16 +75,17 @@ class ExaminationAppTitleFrame extends JFrame {
   //This is an inner class that is used to detect a button press
   class StudentButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
-    new  ExamAppStudentLogin();
+      new  ExamAppStudentLogin();
       thisFrame.dispose();
       // new [name of student program]; //create a new FunkyFrame (another file that extends JFrame)
     }
+  }
     
     //MEthod to load from the file IO
-    public static void loadData(){
+    public static boolean loadData() throws Exception{
       //load students
       //create list to hold students
-      SimpleLinkedList<Student> readStudentList = new SimpleLinkedList<Student>;
+      SimpleLinkedList<Student> readStudentList = new SimpleLinkedList<Student>();
       //initialize file and reader
       File studentFile = new File("studentFile.txt");
       Scanner studentFileScanner = new Scanner(studentFile);
@@ -91,17 +93,17 @@ class ExaminationAppTitleFrame extends JFrame {
       while (studentFileScanner.hasNext()){
         Student readStudent = new Student();
         readStudent.setIDNumber(studentFileScanner.next());
-        SimpleLinkedList<Object> readGrades = new SimpleLinkedList<Object>;
+        SimpleLinkedList<Object> readGrades = new SimpleLinkedList<Object>();
         for (int gCount = 0; gCount > 5; gCount++){
           readGrades.add(studentFileScanner.next());
         }
         readStudent.setGrades(readGrades);
-        SimpleLinkedList<String> readCourses = new SimpleLinkedList<String>;
+        SimpleLinkedList<String> readCourses = new SimpleLinkedList<String>();
         for (int cCount = 0; cCount > 5; cCount++){
           readCourses.add(studentFileScanner.next());
         }
         readStudent.setCourses(readCourses);
-      //add student to list
+        //add student to list
         readStudentList.add(readStudent);
       }
       //set universal student list to this one
@@ -111,7 +113,7 @@ class ExaminationAppTitleFrame extends JFrame {
       
       //load tests
       //create list to hold tests
-      SimpleLinkedList<Test> readTestList = new SimpleLinkedList<Test>;
+      SimpleLinkedList<Test> readTestList = new SimpleLinkedList<Test>();
       //initialize file and reader
       File testFile = new File("testFile.txt");
       Scanner testFileReader = new Scanner(testFile);
@@ -120,10 +122,10 @@ class ExaminationAppTitleFrame extends JFrame {
         Test readTest = new Test();
         readTest.setName(testFileReader.next());
         readTest.setCoursesAvailable(testFileReader.next());
-        SimpleLinkedList<Question> readQuestions = new SimpleLinkedList<Question>;
-        while(testFileReader.next != "%"){
+        SimpleLinkedList<Question> readQuestions = new SimpleLinkedList<Question>();
+        while(testFileReader.next() != "%"){
           Question readQuestion = new Question();
-          readQuestion.setType(testFileReader.next());
+          readQuestion.setType(testFileReader.nextInt());
           readQuestion.setQuestion(testFileReader.next());
           readQuestions.add(readQuestion);
         }
@@ -135,12 +137,14 @@ class ExaminationAppTitleFrame extends JFrame {
       Test.tests = readTestList;
       //close Scanner
       testFileReader.close();
+      //return
+      return true;
+    }
+    
+    //Main method starts this application
+    public static void main(String[] args) { 
+      new ExaminationAppTitleFrame();
+      
+    }
+    
   }
-
-  //Main method starts this application
-  public static void main(String[] args) { 
-    new ExaminationAppTitleFrame();
-
-  }
-  
-}

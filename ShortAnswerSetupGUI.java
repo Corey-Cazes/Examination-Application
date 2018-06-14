@@ -157,15 +157,10 @@ choicePanelMain.add(choicePanel5);
     	shortAnswer.addAnswer(ChoiceField3.getText().toString());
     	shortAnswer.addAnswer(ChoiceField4.getText().toString());
     	shortAnswer.addAnswer(ChoiceField5.getText().toString());
-  
     	
-		System.out.println("Short Answer Added: ");
-		System.out.println("Question: "+questionField.getText().toString());
-		System.out.println("Choice 1: "+ChoiceField1.getText().toString());
-		System.out.println("Choice 2: "+ChoiceField2.getText().toString());
-		System.out.println("Choice 3: "+ChoiceField3.getText().toString());
-		System.out.println("Choice 4: "+ChoiceField4.getText().toString());
-		System.out.println("Choice 5: "+ChoiceField5.getText().toString());
+    	tempTest.addShortAnswer(shortAnswer);
+  
+
 		
     	new QuestionTypeGUI();
       thisFrame.dispose();

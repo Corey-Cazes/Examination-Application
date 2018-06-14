@@ -3,6 +3,7 @@ public class StudentTestMainFrame{
 	private static Test test;
 	private static SimpleLinkedList<Question> questionList;
 	private static int mark = 0;
+	private static Student student;
 	
 
 	public static Test getTest() {
@@ -11,6 +12,14 @@ public class StudentTestMainFrame{
 
 	public static void setTest(Test test) {
 		StudentTestMainFrame.test = test;
+	}
+	
+	public static Student getStudent() {
+		return student;
+	}
+
+	public static void setStudent(Student student) {
+		StudentTestMainFrame.student = student;
 	}
 	
 	
@@ -28,6 +37,11 @@ public class StudentTestMainFrame{
 	}
 	
 	public static void nextQuestion (int num) {
+		
+		if ((num)>questionList.size()) {
+			new ExamAppStudentTest(StudentTestMainFrame.student);
+			return;
+		}
 		if (questionList != null) {
 			if (questionList.get(num+1) instanceof MultipleChoice) {
 				new DisplayMultipleChoiceGUI(StudentTestMainFrame.test, num);

@@ -18,12 +18,16 @@ class ExamAppStudentTest extends JFrame{
   
   JFrame thisFrame;
   
+  public static Student student;
+  
   static Test test; 
   
   //constructor
   ExamAppStudentTest(Student currentStudent) {
     super("Examination Application");
     this.thisFrame = this;
+    
+    ExamAppStudentTest.student = currentStudent;
     
     //declaring this up heeere
     //declare testList using a method that searches all tests and compares with the current students courses
@@ -72,6 +76,7 @@ class ExamAppStudentTest extends JFrame{
   class goButtonListener implements ActionListener {  //this is the required class definition
     public void actionPerformed(ActionEvent event)  {  
       System.out.println("Going forwards");
+      StudentTestMainFrame.setStudent(ExamAppStudentTest.student);
       StudentTestMainFrame.setTest(test);
      StudentTestMainFrame.setQuestionList(test.getQuestions());
      StudentTestMainFrame.initiateTest();

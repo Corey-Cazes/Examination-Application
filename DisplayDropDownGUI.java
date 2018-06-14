@@ -35,7 +35,7 @@ class DisplayDropDownGUI extends JFrame {
 		
 		SimpleLinkedList<?> listQuestion = test.getQuestions();
 		DropDown dropDownQuestion = new DropDown();
-		dropDownQuestion = (DropDown) listQuestion.get(num);
+		dropDownQuestion = (DropDown) listQuestion.get(num+1);
 		
 		SimpleLinkedList <String>listAnswers = dropDownQuestion.getAnswers();
 		
@@ -89,7 +89,7 @@ class DisplayDropDownGUI extends JFrame {
 	// This is an inner class that is used to detect a button press
 	class DoneButtonListener implements ActionListener { // this is the required class definition
 		public void actionPerformed(ActionEvent event) {
-				StudentTestMainFrame.nextQuestion(num);
+				StudentTestMainFrame.nextQuestion(num+1);
 			thisFrame.dispose();
 			// new [name of teacher program]; //create a new FunkyFrame (another file that
 			// extends JFrame)

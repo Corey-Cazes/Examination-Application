@@ -50,6 +50,10 @@ class TeacherLogin extends JFrame {
     loginButton.addActionListener(new LoginButtonListener());
     loginButton.setSize(new Dimension(200,30));
     
+    JButton cancelButton = new JButton("Cancel");
+    cancelButton.addActionListener(new CancelButtonListener());
+    cancelButton.setSize(new Dimension(200,30));
+    
     
  
     
@@ -59,6 +63,7 @@ class TeacherLogin extends JFrame {
 
     //add the buttons to the buttonPanel       
     buttonPanel.add(loginButton);
+    buttonPanel.add(cancelButton);
     loginPanel.add(loginLabel);
     loginPanel.add(loginField);
 
@@ -90,6 +95,17 @@ class TeacherLogin extends JFrame {
       // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
     }
   }
+  
+  class CancelButtonListener implements ActionListener {  //this is the required class definition
+	    public void actionPerformed(ActionEvent event)  {  
+	
+	    	new ExaminationAppTitleFrame();
+	    	thisFrame.dispose();
+	    
+	      
+	      // new [name of teacher program]; //create a new FunkyFrame (another file that extends JFrame)
+	    }
+	  }
   
   //This is an inner class that is used to detect a button press
 

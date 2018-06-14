@@ -1,10 +1,13 @@
 
 //Imports
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
@@ -38,13 +41,20 @@ class DisplayShortAnswerGUI extends JFrame {
 		
 		SimpleLinkedList<Question> listQuestion = test.getQuestions();
 		
-		question = (ShortAnswer) listQuestion.get(num);
+		question = (ShortAnswer) listQuestion.get(num+1);
 
 
 		JPanel questionPanel = new JPanel();
 		JPanel answerPanel = new JPanel(new FlowLayout());
 		
+		JButton submitAnswerButton = new JButton("Done");
+		submitAnswerButton.addActionListener(new DoneButtonListener());
+		submitAnswerButton.setSize(new Dimension(200, 30));
+		
+		
+		
 		questionPanel.add(new JLabel(question.getQuestion()));
+		questionPanel.add(submitAnswerButton);
 		
 		JTextArea answerField = new JTextArea("Enter Your Text Here", 15, 40);
 		answerField.setLineWrap(true);  //this tells it to break the string to fit the TextArea
@@ -71,7 +81,7 @@ class DisplayShortAnswerGUI extends JFrame {
 	// This is an inner class that is used to detect a button press
 	class DoneButtonListener implements ActionListener { // this is the required class definition
 		public void actionPerformed(ActionEvent event) {
-			StudentTestMainFrame.nextQuestion(num);
+			StudentTestMainFrame.nextQuestion(num+1);
 			thisFrame.dispose();
 			// new [name of teacher program]; //create a new FunkyFrame (another file that
 			// extends JFrame)
